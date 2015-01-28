@@ -11,7 +11,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
+/**
+ * This class implements the interfaces OnTouchListener and OnDragListener
+ * This means that the textviews and layouts can be implicitly assigned to View actions
+ */
 public class MainActivity extends Activity implements View.OnTouchListener, View.OnDragListener
 {
 
@@ -25,10 +28,16 @@ public class MainActivity extends Activity implements View.OnTouchListener, View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.textView1).setOnTouchListener(this);
+        /**
+         * This is a really nifty way of assigning View events without locking it in.
+         */
+        findViewById(R.id.olleView).setOnTouchListener(this);
         findViewById(R.id.pinkLayout).setOnDragListener(this);
         findViewById(R.id.yellowLayout).setOnDragListener(this);
 
+        /**
+         * TextViews in the corner
+         */
         _textView = new TextView[4];
 
         _textView[0] = (TextView) findViewById(R.id.ringView);
@@ -50,22 +59,14 @@ public class MainActivity extends Activity implements View.OnTouchListener, View
         }
     }
 
-    /**
-     * Sets visibility of aggregator TextViews
-     * @param a 1 for visible, 0 for invisible
-     */
-    void setVisibility(int a)
-    {
-        for (int i = 0 ; i < _textView.length; i++)
-            _textView[i].setVisibility(a);
-    }
+
 
     public boolean onDrag(View layoutview, DragEvent dragevent) {
         int action = dragevent.getAction();
         switch (action) {
             case DragEvent.ACTION_DRAG_STARTED:
                 Log.d(LOGCAT, "Drag event started");
-                setVisibility(1);
+                setVisibility(View.VISIBLE);
                 break;
             case DragEvent.ACTION_DRAG_ENTERED:
                 Log.d(LOGCAT, "Drag event entered into "+layoutview.toString());
@@ -81,7 +82,7 @@ public class MainActivity extends Activity implements View.OnTouchListener, View
                 LinearLayout container = (LinearLayout) layoutview;
                 container.addView(view);
                 view.setVisibility(View.VISIBLE);
-                setVisibility(0);
+                setVisibility(View.INVISIBLE);
                 break;
             case DragEvent.ACTION_DRAG_ENDED:
                 Log.d(LOGCAT, "Drag ended");
@@ -92,4 +93,13 @@ public class MainActivity extends Activity implements View.OnTouchListener, View
         return true;
     }
 
+    /**
+     * Sets visibility of aggregator TextViews
+     * @param a visible state
+     */
+    void setVisibility(int a)
+    {
+        for (int i = 0 ; i < _textView.length; i++)
+            _textView[i].setVisibility(a);
+    }
 }
