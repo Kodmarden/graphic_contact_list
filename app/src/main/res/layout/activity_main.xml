@@ -3,37 +3,56 @@
     android:id="@+id/center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFFFF"
     tools:context=".MainActivity" >
 
-    <LinearLayout
-        android:id="@+id/pinkLayout"
+    <TextView
         android:layout_width="fill_parent"
-        android:layout_height="210dp"
+        android:layout_height="fill_parent"
+        />
+    <LinearLayout
+        android:id="@+id/callLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="#FFFFFFFF"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentLeft="true"
+
+        >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ring"
-            android:id="@+id/ringView"
+            android:id="@+id/callView"
             android:visibility="invisible"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentLeft="true" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/smsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFFFF"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="sms"
             android:id="@+id/smsView"
             android:visibility="invisible"
-            android:layout_alignParentBottom="true"
+            android:layout_alignParentBottom="false"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
 
-            android:layout_gravity="right" />
-
+            />
+    </LinearLayout>
         <TextView
             android:id="@+id/olleView"
             android:layout_width="wrap_content"
@@ -41,36 +60,51 @@
             android:textSize="100dp"
             android:text="@string/text_olle" />
 
-    </LinearLayout>
+
+
 
     <LinearLayout
-        android:id="@+id/yellowLayout"
-        android:layout_width="fill_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="210dp"
-        android:background="#FFFFFFFF"
-        android:orientation="vertical" >
-    </LinearLayout>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mailLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+
+
+        >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="mejl"
         android:id="@+id/mailView"
-
+        android:visibility="invisible"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:visibility="invisible"
-        android:layout_alignParentStart="true" />
 
-    <TextView
+        android:layout_alignParentStart="true" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="redigera"
-        android:id="@+id/editView"
-        android:visibility="invisible"
+        android:id="@+id/editLayout"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="redigera"
+            android:id="@+id/editView"
+            android:visibility="invisible"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        </LinearLayout>
 
 </RelativeLayout>
